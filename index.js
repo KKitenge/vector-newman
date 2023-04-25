@@ -58,7 +58,7 @@ const questions = [
 //Initialize
 function init() {
     inquirer.prompt(questions).then((response) => {
-        console.log('Generating Logo');
+        console.log('Generated svglogo.svg');
         let Shape;
         switch (response.shape) {
             case 'Triangle':
