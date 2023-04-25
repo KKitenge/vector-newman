@@ -48,18 +48,18 @@ const questions = [
 //     console.log(response);
 //     writeToFile('svglogo.svg', response)
 // }
-function writeToFile(fileName, response) {
-    // fs.writeFileSync(path.join(process.cwd(), fileName), response);   
-    fs.writeFile(fileName, response, (err) => {
-        if (err) throw err;
-    });
-}
+// function writeToFile(fileName, response) {
+//     // fs.writeFileSync(path.join(process.cwd(), fileName), response);   
+//     fs.writeFile(fileName, response, (err) => {
+//         if (err) throw err;
+//     });
+// }
 
 //Initialize
 function init() {
     inquirer.prompt(questions).then((response) => {
         console.log('Generating Logo');
-        let shape;
+        let Shape;
         switch (response.Shape) {
             case 'Triangle':
                 Shape = new Triangle(response.textColor, response.shapeColor, response.text)
@@ -72,7 +72,10 @@ function init() {
                 break;
         }
 
-        writeToFile('./examples/svglogo.svg', response);
+        // writeToFile('./examples/svglogo.svg', response);
+        fs.writeFile('./examples/svglogo.svg', response, (err) => {
+            if (err) throw err;
+        });
     });
 }
 
