@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Shape = require('./lib/shape');
+const {Triangle, Square, Circle} = require('./lib/shape');
 const path = require('path')
 
 //List of 4 questions - text/textcolor/shape/shapecolor
@@ -17,7 +17,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'textcolor',
+        name: 'textColor',
         message: 'Enter the color for text:',
         validate: (response) => {
             if (response === "") {
@@ -33,7 +33,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'shapecolor',
+        name: 'shapeColor',
         message: 'Enter a color for your shape:',
         validate: (response) => {
             if (response === "") {
@@ -60,20 +60,21 @@ function init() {
     inquirer.prompt(questions).then((response) => {
         console.log('Generating Logo');
         let Shape;
-        switch (response.Shape) {
+        switch (response.shape) {
             case 'Triangle':
-                Shape = new Triangle(response.textColor, response.shapeColor, response.text)
+                Shape = new Triangle(response.text, response.textColor, response.shapeColor)
                 break;
             case 'Square':
-                Shape = new Square(response.textColor, response.shapeColor, response.text)
+                Shape = new Square(response.text, response.textColor, response.shapeColor)
                 break;
             case 'Circle':
-                Shape = new Circle(response.textColor, response.shapeColor, response.text)
+                Shape = new Circle(response.text, response.textColor, response.shapeColor)
                 break;
         }
-
+        console.log(response);
+        console.log(Shape);
         // writeToFile('./examples/svglogo.svg', response);
-        fs.writeFile('./examples/svglogo.svg', JSON.stringify(response), (err) => {
+        fs.writeFile('./examples/svglogo.svg', Shape.render(), (err) => {
             if (err) throw err;
         });
     });
