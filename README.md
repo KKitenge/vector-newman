@@ -62,6 +62,8 @@ class Triangle extends Shape {
 
 ## Me Info
 K. Kitenge
-* [Github](https://github.com/KKitenge)
+* [Github](https://github.com/KKitenge)  
+***
 
-![](/dist/VNewman.png)
+
+*Victor Newman* ![Victor Newman](/dist/VNewman.png) 
