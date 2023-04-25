@@ -73,7 +73,7 @@ function init() {
         }
 
         // writeToFile('./examples/svglogo.svg', response);
-        fs.writeFile('./examples/svglogo.svg', response, (err) => {
+        fs.writeFile('./examples/svglogo.svg', JSON.stringify(response), (err) => {
             if (err) throw err;
         });
     });
