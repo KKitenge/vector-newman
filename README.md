@@ -7,7 +7,6 @@ Application to helps users to easily and quickl create SVG files for personal or
 * [Technology Used](#technology-used)
 * [Usage](#usage)
 * [Learning Points](#learning-points)
-* [Credits](#credits)
 * [License](#License)
 
 ## Technology Used
