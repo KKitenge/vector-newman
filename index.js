@@ -16,14 +16,14 @@ const questions = [
         }
     },
     {
-       type: 'input', 
-       name: 'textcolor',
-       message: 'Enter the color for text:',
-       validate: (response) => {
-        if (response === "") {
-            return "Please enter Color choice"
-        } return true;
-       }
+        type: 'input',
+        name: 'textcolor',
+        message: 'Enter the color for text:',
+        validate: (response) => {
+            if (response === "") {
+                return "Please enter Color choice"
+            } return true;
+        }
     },
     {
         type: 'list',
@@ -49,7 +49,10 @@ const questions = [
 //     writeToFile('svglogo.svg', response)
 // }
 function writeToFile(fileName, response) {
-    fs.writeFileSync(path.join(process.cwd(), fileName), response);    
+    // fs.writeFileSync(path.join(process.cwd(), fileName), response);   
+    fs.writeFile(fileName, response, (err) => {
+        if (err) throw err;
+    });
 }
 
 //Initialize
